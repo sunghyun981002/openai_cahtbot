@@ -1,26 +1,189 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-gray-50;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .chat-bubble {
+    @apply inline-block p-4 rounded-lg max-w-[80%] break-words;
+  }
+
+  .chat-bubble-user {
+    @apply bg-indigo-600 text-white ml-auto;
+  }
+
+  .chat-bubble-assistant {
+    @apply bg-white text-gray-800 border border-gray-200 shadow-sm;
+  }
+
+  .chat-bubble-assistant h3 {
+    @apply text-lg font-bold mb-3 text-indigo-700 border-b border-indigo-100 pb-2;
+  }
+
+  .chat-bubble-assistant p {
+    @apply mb-3 last:mb-0 leading-relaxed;
+  }
+
+  .chat-bubble-assistant ul {
+    @apply mb-4 pl-5 space-y-1;
+  }
+
+  .chat-bubble-assistant ol {
+    @apply mb-4 pl-5 space-y-1;
+  }
+
+  .chat-bubble-assistant ul > li {
+    @apply list-disc text-gray-700;
+  }
+
+  .chat-bubble-assistant ol > li {
+    @apply list-decimal text-gray-700;
+  }
+
+  .chat-bubble-assistant li > ul,
+  .chat-bubble-assistant li > ol {
+    @apply mt-1 mb-0;
+  }
+
+  .chat-bubble-assistant pre {
+    @apply bg-gray-50 p-3 rounded-md my-3 overflow-x-auto border border-gray-100;
+  }
+
+  .chat-bubble-assistant code {
+    @apply bg-gray-50 px-1.5 py-0.5 rounded text-sm font-mono text-indigo-600;
+  }
+
+  .chat-bubble-assistant pre code {
+    @apply bg-transparent p-0 text-gray-700;
+  }
+
+  .chat-bubble-assistant blockquote {
+    @apply border-l-4 border-indigo-200 pl-4 my-3 text-gray-600 italic bg-indigo-50/30 py-2 rounded-r;
+  }
+
+  .chat-bubble-assistant table {
+    @apply w-full my-3 border-collapse;
+  }
+
+  .chat-bubble-assistant th,
+  .chat-bubble-assistant td {
+    @apply border border-gray-200 px-3 py-2 text-sm;
+  }
+
+  .chat-bubble-assistant th {
+    @apply bg-gray-50 font-semibold text-gray-700;
+  }
+
+  .chat-bubble-assistant td {
+    @apply bg-white;
+  }
+
+  .role-selector {
+    @apply flex flex-wrap gap-4 justify-center mb-4;
+  }
+
+  .role-button {
+    @apply flex flex-col items-center gap-2 p-4 rounded-xl bg-white border-2 border-gray-100
+           hover:border-indigo-500 hover:shadow-md transition-all duration-200
+           min-w-[120px];
+  }
+
+  .role-button-active {
+    @apply border-indigo-500 bg-indigo-50 shadow-md;
+  }
+
+  .role-description {
+    @apply text-center text-gray-600 text-sm bg-white p-4 rounded-lg border border-gray-100
+           shadow-sm max-w-2xl mx-auto;
+  }
+
+  .card {
+    @apply block p-6 bg-white rounded-lg border border-gray-100 shadow-sm 
+           hover:shadow-md hover:border-gray-200 transition-all duration-200;
+  }
+
+  .card-title {
+    @apply text-2xl font-semibold mb-4 text-gray-900;
+  }
+
+  .card-text {
+    @apply text-gray-600;
+  }
+
+  .nav-link {
+    @apply text-gray-200 hover:text-white px-4 py-2 rounded-lg transition-colors 
+           hover:bg-gray-700/50;
+  }
+
+  .button-primary {
+    @apply bg-indigo-600 text-white px-4 py-2 rounded-lg 
+           hover:bg-indigo-700 
+           disabled:bg-gray-400 disabled:cursor-not-allowed 
+           transition-colors shadow-sm hover:shadow;
+  }
+
+  .input-primary {
+    @apply flex-1 p-2 bg-white border border-gray-200 rounded-lg 
+           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
+           shadow-sm;
+  }
+
+  .page-container {
+    @apply max-w-4xl mx-auto py-8 px-4;
+  }
+
+  .chat-container {
+    @apply bg-white rounded-lg border border-gray-100 shadow-sm p-4 mb-4 h-[600px] 
+           overflow-y-auto scroll-smooth;
+  }
+
+  .main-title {
+    @apply text-3xl font-bold text-center mb-8 text-gray-900;
+  }
+
+  .nav-container {
+    @apply bg-gray-800 shadow-md;
+  }
+
+  .nav-content {
+    @apply container mx-auto px-4 py-4 flex justify-between items-center;
+  }
+
+  .nav-brand {
+    @apply text-xl font-bold text-white;
+  }
+
+  .loading-dots {
+    @apply flex justify-center items-center space-x-1;
+  }
+}
+
+.loading-dots > div {
+  width: 8px;
+  height: 8px;
+  background-color: #6b7280;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-dots > div:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots > div:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  }
+  40% { 
+    transform: scale(1.0);
+  }
 }
