@@ -72,7 +72,7 @@ export default function RolePage() {
   return (
     <div className="page-container">
       <div className="mb-8">
-        <h1 className="main-title">공공기관 민원 상담</h1>
+        <h1 className="main-title">역할 AI</h1>
         <div className="role-selector"> 
           {CHAT_ROLES.map((role) => (
             <button

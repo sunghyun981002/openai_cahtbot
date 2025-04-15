@@ -67,20 +67,33 @@
   }
 
   .chat-bubble-assistant table {
-    @apply w-full my-3 border-collapse;
-  }
-
-  .chat-bubble-assistant th,
-  .chat-bubble-assistant td {
-    @apply border border-gray-200 px-3 py-2 text-sm;
+    @apply w-full my-3 border-collapse bg-white rounded-lg overflow-hidden;
   }
 
   .chat-bubble-assistant th {
-    @apply bg-gray-50 font-semibold text-gray-700;
+    @apply bg-indigo-50 text-indigo-700 font-semibold px-4 py-2 text-left border border-indigo-100;
   }
 
   .chat-bubble-assistant td {
-    @apply bg-white;
+    @apply px-4 py-2 border border-gray-200;
+  }
+
+  /* 수식 스타일 */
+  .chat-bubble-assistant .math {
+    @apply bg-gray-50 px-3 py-1 rounded-md text-gray-800 font-mono text-sm my-2 inline-block;
+  }
+
+  .chat-bubble-assistant .math-block {
+    @apply block text-center my-4 bg-gray-50 p-3 rounded-lg border border-gray-200;
+  }
+
+  /* 기출 문제 스타일 */
+  .chat-bubble-assistant .exam-question {
+    @apply bg-gray-50/50 p-4 rounded-lg border border-gray-200 my-3;
+  }
+
+  .chat-bubble-assistant .exam-info {
+    @apply text-sm text-gray-500 mb-2;
   }
 
   .role-selector {

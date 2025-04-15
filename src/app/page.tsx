@@ -14,9 +14,9 @@ export default function Home() {
           </p>
         </a>
         <a href="/role" className="card">
-          <h2 className="card-title">공공기관 민원 챗봇</h2>
+          <h2 className="card-title">역할 AI</h2>
           <p className="card-text">
-            공공기관 민원 상담을 위한 특화된 AI 챗봇입니다.
+            다양한 역할을 수행하는 특화된 AI 챗봇입니다.
           </p>
         </a>
         <a href="/blog-writer" className="card">
